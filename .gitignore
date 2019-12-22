@@ -1,5 +1,4 @@
 /Dist/
-/LICENSE.txt
-/CHANGELOG.txt
-/vendor/
-/nbproject/private/
+/LICENSE
+/CHANGELOG.md
+.DS_Store
