@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [3.0.3] - 2019-12-21
-- Compatibility set to 9.5 to 10.2 again!
+- Compatibility set to 9.5 again!
 - Status set to stable
 - Several code optimizations done
 - Page list can now display more different page types

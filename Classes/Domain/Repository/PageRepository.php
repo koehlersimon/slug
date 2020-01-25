@@ -55,7 +55,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             default:
                 $query->where(
                     $queryBuilder->expr()->eq('hidden', 0),
-                    $queryBuilder->expr()->eq('deleted', 0)
+                    $queryBuilder->expr()->eq('deleted', 0),
+                    $queryBuilder->expr()->eq('doktype', 1)
                 );
             break;
         }

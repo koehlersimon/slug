@@ -10,7 +10,7 @@
     <f:if condition="{records}">
         <f:then>
 
-            <f:form id="slug-filter-list" method="POST">
+            <f:form id="slug-filter-list" method="GET">
                 <input type="hidden" name="tx_slug_site_slugslugs[table]" value="{table}">
                 <div class="row">
                     <div class="col-sm-3">
@@ -40,7 +40,7 @@
                 <h3>{label} <small>{table}</small></h3>
             </div>
 
-            <f:widget.paginate objects="{records}" as="recordsPaginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
+            <f:widget.paginate objects="{records}" as="recordsPaginated" configuration="{addQueryStringMethod: 'GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
                 <div id="slug-list-wrap">
 

@@ -7,7 +7,7 @@
     <f:flashMessages />
     <f:render partial="GlobalHeader" arguments="{_all}"/>
 
-    <f:form id="slug-filter-list" method="POST">
+    <f:form id="slug-filter-list" method="POST" addQueryStringMethod="GET" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-3">
                 <h6>{f:translate(key:'filter.form.label.search_key', extensionName: slug)}</h6>
@@ -36,137 +36,166 @@
         </div>
     </f:form>
 
+    <f:widget.paginate objects="{pages}" as="paginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
-    <f:widget.paginate objects="{pages}" as="pagesPaginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
+    <div id="slug-list-wrap">
 
-        <div id="slug-list-wrap">
+        <table class="table table-hover">
+            <tr>
+                <th colspan="2"><span class="badge badge-info record-count" title="Number of records in the current view"></span></th>
+                <th colspan="3" style="text-align: right;">
+                    <div class="btn-group">
+                        <button class="btn btn-default saveAllPageSlugs" title="{f:translate(key:'button.saveall.title', extensionName: slug)}">
+                            <i class="fa fa-save"></i> {f:translate(key:'button.saveall.label', extensionName: slug)}
+                        </button>
 
-            <table class="table table-hover">
-                <tr>
-                    <th colspan="2"><span class="badge badge-info record-count" title="Number of records in the current view"></span></th>
-                    <th colspan="3" style="text-align: right;">
-                        <div class="btn-group">
-                            <button class="btn btn-default saveAllPageSlugs" title="{f:translate(key:'button.saveall.title', extensionName: slug)}">
-                                <i class="fa fa-save"></i> {f:translate(key:'button.saveall.label', extensionName: slug)}
-                            </button>
+                        <button class="btn btn-default generateAllPageSlugs" title="{f:translate(key:'button.generateall.title', extensionName: slug)}">
+                            <i class="fa fa-refresh"></i> {f:translate(key:'button.generateall.label', extensionName: slug)}
+                        </button>
+                    </div>
+                </th>
+            </tr>
+            <f:for each="{paginated}" as="page">
+                <tr{f:if(condition: page.deleted, then: ' class="deleted"')}>
+                    <td title="id={page.uid}">
+                        <f:switch expression="{page.doktype}">
+                            <f:case value="3">
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-link text-info"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-link"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:case>
+                            <f:case value="4">
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-share-square text-info"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-share-square"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:case>
+                            <f:case value="254">
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-folder text-danger"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-folder"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:case>
+                            <f:case value="199">
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-minus text-danger"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-minus"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:case>
+                            <f:case value="7">
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-reply-all text-danger"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-reply-all"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:case>
+                            <f:defaultCase>
+                                <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
+                                    <f:then>
+                                        <i class="fa fa-file-o"></i>
+                                    </f:then>
+                                    <f:else>
+                                        <i class="fa fa-file"></i>
+                                    </f:else>
+                                </f:if>
+                            </f:defaultCase>
+                        </f:switch>
+                    </td>
+                    <td>
+                        <f:switch expression="{backendConfiguration.pageLabelField}">
 
-                            <button class="btn btn-default generateAllPageSlugs" title="{f:translate(key:'button.generateall.title', extensionName: slug)}">
-                                <i class="fa fa-refresh"></i> {f:translate(key:'button.generateall.label', extensionName: slug)}
-                            </button>
-                        </div>
-                    </th>
+                            <f:case value="title">
+                                <strong>{page.title}</strong><br>
+                            </f:case>
+
+                            <f:case value="seo_title">
+                                <strong>{page.seo_title}</strong><br>
+                            </f:case>
+
+                            <f:case value="nav_title">
+                                <strong>{page.nav_title}</strong><br>
+                            </f:case>
+
+                            <f:defaultCase>
+                                <strong>{page.title}</strong><br>
+                            </f:defaultCase>
+
+                        </f:switch>
+                        <f:render partial="PageUrl" arguments="{page:page}"/>
+                    </td>
+                    <td>
+                        <core:icon identifier="flags-{page.flag}" size="small" />
+                    </td>
+                    <td class="slug-input">
+                        <f:render partial="SlugInput" arguments="{page:page}"/>
+                    </td>
+                    <td nowrap>
+                        <f:if condition="!{page.tx_slug_locked} && !{page.deleted} && !{page.hidden} && {page.doktype} !== 7">
+                            <div class="btn-group">
+                                <button data-uid="{page.uid}" id="savePageSlug-{page.uid}" class="btn btn-default savePageSlug" title="{f:translate(key:'button.save.title', extensionName: slug)}">
+                                    <i class="fa fa-save"></i>
+                                </button>
+
+                                <button data-uid="{page.uid}" id="generatePageSlug-{page.uid}" class="btn btn-default generatePageSlug" title="{f:translate(key:'button.generate.title', extensionName: slug)}">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+
+                                <f:if condition="{backendConfiguration.recordInfoEnabled}">
+                                    <button data-uid="{page.uid}" id="slugInfo-{page.uid}" class="btn btn-default slugInfo" title="{f:translate(key:'button.info.title', extensionName: slug)}">
+                                        <i class="fa fa-info-circle"></i>
+                                    </button>
+                                </f:if>
+                            </div>
+                        </f:if>
+                    </td>
                 </tr>
-                <f:for each="{pagesPaginated}" as="page">
-                    <tr{f:if(condition: page.deleted, then: ' class="deleted"')}>
-                        <td title="id={page.uid}">
-                            <f:switch expression="{page.doktype}">
-                                <f:case value="3">
-                                    <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
-                                        <f:then>
-                                            <i class="fa fa-link text-info"></i>
-                                        </f:then>
-                                        <f:else>
-                                            <i class="fa fa-link"></i>
-                                        </f:else>
-                                    </f:if>
-                                </f:case>
-                                <f:case value="254">
-                                    <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
-                                        <f:then>
-                                            <i class="fa fa-folder text-danger"></i>
-                                        </f:then>
-                                        <f:else>
-                                            <i class="fa fa-folder"></i>
-                                        </f:else>
-                                    </f:if>
-                                </f:case>
-                                <f:defaultCase>
-                                    <f:if condition="{page.hidden} === 1 || {page.deleted} === 1">
-                                        <f:then>
-                                            <i class="fa fa-file-o"></i>
-                                        </f:then>
-                                        <f:else>
-                                            <i class="fa fa-file"></i>
-                                        </f:else>
-                                    </f:if>
-                                </f:defaultCase>
-                            </f:switch>
-                        </td>
-                        <td>
-                            <f:switch expression="{backendConfiguration.pageLabelField}">
-
-                                <f:case value="title">
-                                    <strong>{page.title}</strong><br>
-                                </f:case>
-
-                                <f:case value="seo_title">
-                                    <strong>{page.seo_title}</strong><br>
-                                </f:case>
-
-                                <f:case value="nav_title">
-                                    <strong>{page.nav_title}</strong><br>
-                                </f:case>
-
-                                <f:defaultCase>
-                                    <strong>{page.title}</strong><br>
-                                </f:defaultCase>
-
-                            </f:switch>
-                            <f:render partial="PageUrl" arguments="{page:page}"/>
-                        </td>
-                        <td>
-                            <core:icon identifier="flags-{page.flag}" size="small" />
-                        </td>
-                        <td class="slug-input">
-                            <f:render partial="SlugInput" arguments="{page:page}"/>
-                        </td>
-                        <td nowrap>
-                            <f:if condition="!{page.tx_slug_locked} && !{page.deleted} && !{page.hidden}">
-                                <div class="btn-group">
-                                    <button data-uid="{page.uid}" id="savePageSlug-{page.uid}" class="btn btn-default savePageSlug" title="{f:translate(key:'button.save.title', extensionName: slug)}">
-                                        <i class="fa fa-save"></i>
-                                    </button>
-
-                                    <button data-uid="{page.uid}" id="generatePageSlug-{page.uid}" class="btn btn-default generatePageSlug" title="{f:translate(key:'button.generate.title', extensionName: slug)}">
-                                        <i class="fa fa-refresh"></i>
-                                    </button>
-
-                                    <f:if condition="{backendConfiguration.recordInfoEnabled}">
-                                        <button data-uid="{page.uid}" id="slugInfo-{page.uid}" class="btn btn-default slugInfo" title="{f:translate(key:'button.info.title', extensionName: slug)}">
-                                            <i class="fa fa-info-circle"></i>
-                                        </button>
-                                    </f:if>
-                                </div>
-                            </f:if>
+                <f:if condition="{backendConfiguration.recordInfoEnabled}">
+                    <tr class="record-info-row">
+                        <td colspan="6">
+                            <div data-uid="{page.uid}" class="record-info-container">
+                                <f:switch expression="{page.doktype}">
+                                    <f:case value="3">
+                                        <div class="alert alert-info">
+                                            {f:translate(key:'recordinfo.no_info_available', extensionName: slug)}
+                                        </div>
+                                    </f:case>
+                                    <f:case value="254">
+                                        <div class="alert alert-info">
+                                            {f:translate(key:'recordinfo.no_info_available', extensionName: slug)}
+                                        </div>
+                                    </f:case>
+                                    <f:defaultCase>
+                                        <f:render partial="GooglePreview" arguments="{page:page}"/>
+                                    </f:defaultCase>
+                                </f:switch>
+                            </div>
                         </td>
                     </tr>
-                    <f:if condition="{backendConfiguration.recordInfoEnabled}">
-                        <tr class="record-info-row">
-                            <td colspan="6">
-                                <div data-uid="{page.uid}" class="record-info-container">
-                                    <f:switch expression="{page.doktype}">
-                                        <f:case value="3">
-                                            <div class="alert alert-info">
-                                                {f:translate(key:'recordinfo.no_info_available', extensionName: slug)}
-                                            </div>
-                                        </f:case>
-                                        <f:case value="254">
-                                            <div class="alert alert-info">
-                                                {f:translate(key:'recordinfo.no_info_available', extensionName: slug)}
-                                            </div>
-                                        </f:case>
-                                        <f:defaultCase>
-                                            <f:render partial="GooglePreview" arguments="{page:page}"/>
-                                        </f:defaultCase>
-                                    </f:switch>
-                                </div>
-                            </td>
-                        </tr>
-                    </f:if>
-                </f:for>
-            </table>
+                </f:if>
+            </f:for>
+        </table>
 
-        </div>
+    </div>
 
     </f:widget.paginate>
 

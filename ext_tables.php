@@ -15,8 +15,6 @@ call_user_func(
             );
             $slugConfiguration = $extensionConfiguration->get('slug');
 
-            print_r(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getExtensionVersion('sysext'));
-
             /* Register main site module for slug editing
             *  NOTE: This function has to be replaced with the outcommented
             *  Function below!
