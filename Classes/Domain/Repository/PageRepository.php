@@ -4,6 +4,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 
 /*
@@ -27,6 +28,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $query = $queryBuilder
             ->select('*')
             ->from('pages')
+            ->setMaxResults($filterVariables['maxentries'])
+            ->setFirstResult($filterVariables['pointer'])
             ->orderBy($filterVariables['orderby'],$filterVariables['order']);
 
         switch ($filterVariables['status']) {
@@ -145,6 +148,17 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             array_push($output, $row);
         }
         return $output;
+    }
+
+    public function findTotalPages(){
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+        $queryBuilder->getRestrictions()->removeAll();
+        $result = $queryBuilder
+            ->count('uid')
+            ->from('pages')
+            ->execute()
+            ->fetchColumn(0);
+        return $result;
     }
 
 }
