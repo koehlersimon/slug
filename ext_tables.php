@@ -25,7 +25,7 @@ call_user_func(
                 'slugs',
                 '',
                 [
-                    'Page' => 'list,site,tree',
+                    'Page' => 'list,site,tree,ajaxList',
                     'Extension' => 'additionalTable',
                 ],
                 [
