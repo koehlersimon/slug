@@ -38,6 +38,18 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     }
 
     /**
+     * Generate an Ajax List // EXPERIMENTAL!
+     */
+    protected function ajaxListAction()
+    {
+        $this->view->assignMultiple([
+            'backendConfiguration' => $this->backendConfiguration,
+            'extEmconf' => $this->helper->getEmConfiguration('slug'),
+            'sites' => (array) $this->sites
+        ]);
+    }
+
+    /**
      * List all slugs from the pages table
      */
     protected function listAction()
@@ -46,6 +58,7 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         // Check if filter variables are available, otherwise set default values from ExtensionConfiguration
         if($this->request->hasArgument('filter')){
             $filterVariables = $this->request->getArgument('filter');
+            $filterVariables['pointer'] = 0;
         }
         else{
             $filterVariables['maxentries'] = $this->backendConfiguration['defaultMaxEntries'];
@@ -53,6 +66,7 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             $filterVariables['order'] = $this->backendConfiguration['defaultOrder'];
             $filterVariables['status'] = $this->backendConfiguration['defaultStatus'];
             $filterVariables['key'] = '';
+            $filterVariables['pointer'] = 0;
         }
 
         // Set the order by options for fluid viewhelper f:form.switch
@@ -100,7 +114,8 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             'beLanguage' => $GLOBALS['BE_USER']->user['lang'],
             'extEmconf' => $this->helper->getEmConfiguration('slug'),
             'filterOptions' => $filterOptions,
-            'additionalTables' => $this->settings['additionalTables']
+            'additionalTables' => $this->settings['additionalTables'],
+            'totalPages' => $this->pageRepository->findTotalPages()
         ]);
 
     }
