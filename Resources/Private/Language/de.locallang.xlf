@@ -115,7 +115,7 @@
 				<target>Suche nach Keyword/s in Slugs</target>
 			</trans-unit>
             <trans-unit id="filter.form.label.entries_per_page">
-				<target>Einträge pro Seite</target>
+				<target>Anzahl Einträge</target>
 			</trans-unit>
             <trans-unit id="filter.form.label.order_by">
 				<target>Nach Feld sortieren</target>

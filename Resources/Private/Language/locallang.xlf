@@ -79,7 +79,7 @@
 			</trans-unit>
 
 
-                        <trans-unit id="siteselect.options.others">
+            <trans-unit id="siteselect.options.others">
 				<source>Other pages on the root level (This function comes with the next version!!)</source>
 			</trans-unit>
                         <trans-unit id="siteselect.labels.site">
@@ -120,7 +120,7 @@
 				<source>Find slugs by keyword/s</source>
 			</trans-unit>
             <trans-unit id="filter.form.label.entries_per_page">
-				<source>Entries per page</source>
+				<source>Entries to show</source>
 			</trans-unit>
             <trans-unit id="filter.form.label.order_by">
 				<source>Order by field</source>

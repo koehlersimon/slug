@@ -22,6 +22,27 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     protected $helper;
 
     /**
+     * function ajaxList
+     *
+     * @return void
+     */
+    public function ajaxList(\Psr\Http\Message\ServerRequestInterface $request)
+    {
+        $output = [];
+        $queryParams = $request->getQueryParams();
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($queryParams['table']);
+        $queryBuilder->getRestrictions()->removeAll();
+        $result = $queryBuilder
+            ->select('*')
+            ->from($queryParams['table'])
+            ->execute();
+        while ($row = $result->fetch()) {
+            $output[] = $row;
+        }
+        return new JsonResponse($output);
+    }
+
+    /**
      * function savePageSlug
      *
      * @return void

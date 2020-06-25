@@ -171,7 +171,7 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             ]);
         }
         else{
-            $this->addFlashMessage('Error: No Site root found! PageController.php Line 130');
+            //$this->addFlashMessage('Error: No Site root found! PageController.php Line 130');
         }
 
     }

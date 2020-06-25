@@ -1,0 +1,24 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:be.container>
+
+        <f:be.pageRenderer
+            includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"
+            includeJsFiles="{0:'{f:uri.resource(path:\'JavaScript/Ajax.js\')}'}"
+            />
+
+            <div class="typo3-fullDoc">
+                <div id="typo3-docbody">
+                    <div id="typo3-inner-docbody">
+                        <f:flashMessages />
+                        <f:render section="content" />
+                        <footer id="slug-footer">
+                            &copy; 2019 by <a href="https://simon-koehler.com/?pk_campaign=slug&pk_kwd=slug&pk_source=TYPO3-Extension" target="_blank">Simon Köhler</a> | <a href="#" data-toggle="modal" data-target="#modal-extension-info">Info</a> | <a href="https://github.com/koehlersimon/slug#custom-records" target="_blank">How to use custom records</a> | <a href="https://www.digistore24.com/redir/246076/GOCHILLA/" target="_blank">Learn TYPO3</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+            <f:render partial="ModalExtensionInfo"/>
+
+    </f:be.container>
+</html>

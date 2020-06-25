@@ -1,5 +1,5 @@
 {namespace core = TYPO3\CMS\Core\ViewHelpers}
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="content">
@@ -36,26 +36,24 @@
         </div>
     </f:form>
 
-    <f:widget.paginate objects="{pages}" as="paginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
     <div id="slug-list-wrap">
 
         <table class="table table-hover">
             <tr>
-                <th colspan="2"><span class="badge badge-info record-count" title="Number of records in the current view"></span></th>
+                <th colspan="2"><span class="badge badge-info"><span class="record-count" title="Number of records in the current view"></span> of {totalPages}</span></th>
                 <th colspan="3" style="text-align: right;">
                     <div class="btn-group">
                         <button class="btn btn-default saveAllPageSlugs" title="{f:translate(key:'button.saveall.title', extensionName: slug)}">
                             <i class="fa fa-save"></i> {f:translate(key:'button.saveall.label', extensionName: slug)}
                         </button>
-
                         <button class="btn btn-default generateAllPageSlugs" title="{f:translate(key:'button.generateall.title', extensionName: slug)}">
                             <i class="fa fa-refresh"></i> {f:translate(key:'button.generateall.label', extensionName: slug)}
                         </button>
                     </div>
                 </th>
             </tr>
-            <f:for each="{paginated}" as="page">
+            <f:for each="{pages}" as="page">
                 <tr{f:if(condition: page.deleted, then: ' class="deleted"')}>
                     <td title="id={page.uid}">
                         <f:switch expression="{page.doktype}">
@@ -125,22 +123,24 @@
                         <f:switch expression="{backendConfiguration.pageLabelField}">
 
                             <f:case value="title">
-                                <strong>{page.title}</strong><br>
+                                <f:variable name="pageTitle" value="{page.title}"></f:variable>
                             </f:case>
 
                             <f:case value="seo_title">
-                                <strong>{page.seo_title}</strong><br>
+                                <f:variable name="pageTitle" value="{page.seo_title}"></f:variable>
                             </f:case>
 
                             <f:case value="nav_title">
-                                <strong>{page.nav_title}</strong><br>
+                                <f:variable name="pageTitle" value="{page.nav_title}"></f:variable>
                             </f:case>
 
                             <f:defaultCase>
-                                <strong>{page.title}</strong><br>
+                                <f:variable name="pageTitle" value="{page.title}"></f:variable>
                             </f:defaultCase>
 
                         </f:switch>
+
+                        <strong>{pageTitle} <be:link.editRecord uid="{page.uid}" table="pages" returnUrl="{f:be.uri(route: 'site_SlugSlugs')}"><i class="fa fa-edit"></i> </be:link.editRecord></strong><br>
                         <f:render partial="PageUrl" arguments="{page:page}"/>
                     </td>
                     <td>
@@ -196,8 +196,6 @@
         </table>
 
     </div>
-
-    </f:widget.paginate>
 
     <f:render partial="SlugNotes"/>
 

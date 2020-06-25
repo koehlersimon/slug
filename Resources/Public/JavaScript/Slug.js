@@ -29,13 +29,12 @@ jQuery(document).ready(function(){
 
     // Generates a single page slug and puts it into the slug text input field with the same id
     function generatePageSlug(uid){
-        //console.log(TYPO3.settings.ajaxUrls['generatePageSlug']);
         $('#generatePageSlug-'+uid).prop('disabled', true);
         if(slugHasSlash(uid)){
-            console.log("HAS slash");
+            //console.log("HAS slash");
         }
         else{
-            console.log("Has NO slash");
+            //console.log("Has NO slash");
         }
         $.ajax({
             url: TYPO3.settings.ajaxUrls['generatePageSlug'],
