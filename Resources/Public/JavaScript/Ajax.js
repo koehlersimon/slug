@@ -1,37 +1,30 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function() {
 
     function loadList(table,titleField,slugField){
-
-        $.ajax({
-            url: TYPO3.settings.ajaxUrls['ajaxList'],
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                table : table
-            },
-            success: function(response) {
-                if(response === '1'){
-                    top.TYPO3.Notification.info('', slugNotes['notes.info.slugexists']);
+        let url = TYPO3.settings.ajaxUrls['ajaxList']+'&table='+table;
+        let req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        req.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        req.onreadystatechange = function() {
+            if(req.readyState == 4 && req.status == 200) {
+                let records = JSON.parse(request.responseText);
+                let target = document.getElementById('slug-list-wrap');
+                var output = '';
+                for (var i = 0; i < records.length; i++) {
+                    let title = records[i][titleField];
+                    let slug = records[i][slugField];
+                    output += '<div class="entry"><div class="title"><strong>' + title +'</strong><br>' + slug + '</div></div>';
+                    console.log(title);
                 }
-                i=0;
-                response.forEach(function(){
-                    var title = response[i][titleField];
-                    var slug = response[i][slugField];
-                    console.log(response[i]);
-                    $('#slug-list-wrap').append('<div class="entry"><div class="title"><strong>' + title +'</strong><br>' + slug + '</div></div>');
-                    i++;
-                });
-            },
-            fail: function(response){
-                top.TYPO3.Notification.error('Ajax Fail', slugNotes['notes.error.ajax'] + '' + response.statusText);
-            },
-            error: function(response){
+                target.innerHTML = output;
+            }
+            else{
                 top.TYPO3.Notification.error('Ajax Error', slugNotes['notes.error.ajax'] + '' + response.statusText);
             }
-        });
-
+        }
+        request.send();
     }
-
+    
     loadList('pages','title','slug');
 
 });
