@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         req.setRequestHeader("Content-type", "application/json; charset=utf-8");
         req.onreadystatechange = function() {
             if(req.readyState == 4 && req.status == 200) {
-                let records = JSON.parse(request.responseText);
+                let records = JSON.parse(req.responseText);
                 let target = document.getElementById('slug-list-wrap');
                 var output = '';
                 for (var i = 0; i < records.length; i++) {
@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 top.TYPO3.Notification.error('Ajax Error', slugNotes['notes.error.ajax'] + '' + response.statusText);
             }
         }
-        request.send();
+        req.send();
     }
-    
+
     loadList('pages','title','slug');
 
 });
