@@ -36,7 +36,7 @@
             </div>
         </f:form>
 
-        <f:widget.paginate objects="{newsRecords}" as="newsRecordsPaginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
+        <f:widget.paginate objects="{newsRecords}" as="newsRecordsPaginated" configuration="{addQueryStringMethod: 'GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
             <div id="slug-list-wrap">
 

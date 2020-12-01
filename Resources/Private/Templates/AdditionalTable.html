@@ -40,7 +40,7 @@
                 <h3>{label} <small>{table}</small></h3>
             </div>
 
-            <f:widget.paginate objects="{records}" as="recordsPaginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
+            <f:widget.paginate objects="{records}" as="recordsPaginated" configuration="{addQueryStringMethod: 'GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
                 <div id="slug-list-wrap">
 

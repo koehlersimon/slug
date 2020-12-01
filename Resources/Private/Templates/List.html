@@ -37,7 +37,7 @@
     </f:form>
 
 
-    <f:widget.paginate objects="{pages}" as="pagesPaginated" configuration="{addQueryStringMethod: 'POST,GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
+    <f:widget.paginate objects="{pages}" as="pagesPaginated" configuration="{addQueryStringMethod: 'GET', itemsPerPage: filter.maxentries, insertAbove: 1, maximumNumberOfLinks: 10}">
 
         <div id="slug-list-wrap">
 
