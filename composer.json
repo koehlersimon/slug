@@ -5,7 +5,8 @@
     "version": "3.0.2",
     "license": "GPL-3.0",
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.2.0",
+        "typo3/cms-core": "^10.2"
     },
     "keywords": [
         "TYPO3",
