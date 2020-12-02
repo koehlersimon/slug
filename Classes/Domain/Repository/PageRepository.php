@@ -115,19 +115,19 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     }
 
     function getLanguageValue($field,$uid){
-        foreach ($this->languages as $language) {
-            if($language['uid'] === $uid){
-                $output = $language[$field];
-                break;
+        $output = '';
+        if (!empty($this->languages)) {
+            foreach ($this->languages as $language) {
+                if($language['uid'] === $uid){
+                    $output = $language[$field];
+                    break;
+                }
             }
-            elseif($uid === 0){
-                if($field === 'flag'){
-                    $output = 'multiple';
-                }
-                else{
-                    $output = '';
-                }
-                break;
+        } else {
+            // if we dont have additional languages
+            // lets assume we are on the default language
+            if($field === 'flag'){
+                $output = 'multiple';
             }
         }
         return $output;
