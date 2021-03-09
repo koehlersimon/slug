@@ -386,7 +386,7 @@ jQuery(document).ready(function(){
     $('button.slugInfo').on({
         click: function(){
             let uid = $(this).data('uid');
-            let infoContainer = document.querySelector('.record-info-container[data-uid="'+uid+'"]');
+            let infoContainer = document.querySelector('.record-info-row[data-uid="'+uid+'"]');
             infoContainer.classList.toggle('visible');
         }
     });
