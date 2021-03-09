@@ -54,7 +54,7 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     /**
      * List all slugs from the pages table
      */
-    protected function listAction(int $currentPage = 1)
+    protected function listAction()
     {
 
         // Check if filter variables are available, otherwise set default values from ExtensionConfiguration
@@ -111,7 +111,7 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
         $pages = $this->pageRepository->findAllFiltered($filterVariables);
 
-        $arrayPaginator = new ArrayPaginator($pages, $currentPage, 8);
+        $arrayPaginator = new ArrayPaginator($pages, 1, 8);
         $pagination = new SimplePagination($arrayPaginator);
 
         $this->view->assignMultiple([
