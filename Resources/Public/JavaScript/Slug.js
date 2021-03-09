@@ -387,7 +387,7 @@ jQuery(document).ready(function(){
         click: function(){
             let uid = $(this).data('uid');
             let infoContainer = document.querySelector('.record-info-container[data-uid="'+uid+'"]');
-            infoContainer.classList.toggle('d-table-row');
+            infoContainer.classList.toggle('visible');
         }
     });
 
