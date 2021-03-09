@@ -15,19 +15,19 @@
             </div>
             <div class="col-sm-2">
                 <h6>{f:translate(key:'filter.form.label.entries_per_page', extensionName: slug)}</h6>
-                <f:form.select value="{filter.maxentries}" name="filter[maxentries]" options="{filterOptions.maxentries}" optionValueField="value" optionLabelField="label" class="form-control"/>
+                <f:form.select value="{filter.maxentries}" name="filter[maxentries]" options="{filterOptions.maxentries}" optionValueField="value" optionLabelField="label" class="form-select"/>
             </div>
             <div class="col-sm-2">
                 <h6>{f:translate(key:'filter.form.label.order_by', extensionName: slug)}</h6>
-                <f:form.select value="{filter.orderby}" name="filter[orderby]" options="{filterOptions.orderby}" optionValueField="value" optionLabelField="label" class="form-control"/>
+                <f:form.select value="{filter.orderby}" name="filter[orderby]" options="{filterOptions.orderby}" optionValueField="value" optionLabelField="label" class="form-select"/>
             </div>
             <div class="col-sm-2">
                 <h6>{f:translate(key:'filter.form.label.order', extensionName: slug)}</h6>
-                <f:form.select value="{filter.order}" name="filter[order]" options="{filterOptions.order}" optionValueField="value" optionLabelField="label" class="form-control"/>
+                <f:form.select value="{filter.order}" name="filter[order]" options="{filterOptions.order}" optionValueField="value" optionLabelField="label" class="form-select"/>
             </div>
             <div class="col-sm-2">
                 <h6>{f:translate(key:'filter.form.label.status', extensionName: slug)}</h6>
-                <f:form.select value="{filter.status}" name="filter[status]" options="{visible:'visible pages',all:'all pages',hidden:'hidden pages',deleted:'deleted pages'}" class="form-control"/>
+                <f:form.select value="{filter.status}" name="filter[status]" options="{visible:'visible pages',all:'all pages',hidden:'hidden pages',deleted:'deleted pages'}" class="form-select"/>
             </div>
             <div class="col-sm-1">
                 <h6>{f:translate(key:'filter.form.label.action', extensionName: slug)}</h6>

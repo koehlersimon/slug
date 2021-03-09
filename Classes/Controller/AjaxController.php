@@ -28,6 +28,12 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      */
     public function ajaxList(\Psr\Http\Message\ServerRequestInterface $request)
     {
+
+        $currentPage = $queryParams['page'];
+        $entriesPerPage = 20;
+        $offset = ($currentPage-1) * $entriesPerPage;
+        $totalRecords = $this->getTotalRecords();
+
         $output = [];
         $queryParams = $request->getQueryParams();
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($queryParams['table']);
@@ -41,6 +47,22 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         }
         return new JsonResponse($output);
     }
+
+    /**
+     * function getTotalRecords
+     *
+     * @return void
+     */
+    private function getTotalRecords($table){
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($table);
+        $count = $queryBuilder
+           ->count('uid')
+           ->from($table)
+           ->execute()
+           ->fetchColumn(0);
+        return $count;
+    }
+
 
     /**
      * function savePageSlug
