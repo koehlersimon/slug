@@ -2,7 +2,7 @@
     "name": "koehlersimon/slug",
     "description": "Helps you managing the URL slugs of your TYPO3 site",
     "type": "typo3-cms-extension",
-    "version": "3.0.2",
+    "version": "4.0.0",
     "license": "GPL-3.0",
     "require": {
         "php": ">=7.0.0"
