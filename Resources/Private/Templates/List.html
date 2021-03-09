@@ -8,7 +8,7 @@
     <f:render partial="GlobalHeader" arguments="{_all}"/>
 
     <f:form id="slug-filter-list" method="POST" addQueryStringMethod="GET" enctype="multipart/form-data">
-        <div class="row">
+        <div class="row g-1">
             <div class="col-sm-3">
                 <h6>{f:translate(key:'filter.form.label.search_key', extensionName: slug)}</h6>
                 <input type="text" value="{filter.key}" id="filter-key" name="tx_slug_site_slugslugs[filter][key]" class="form-control"/>
