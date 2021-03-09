@@ -11,8 +11,8 @@ use TYPO3\CMS\Backend\Tree\View\PageTreeView;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
-use TYPO3\CMS\Core\Pagination\ArrayPaginator;
-use TYPO3\CMS\Core\Pagination\SimplePagination;
+//use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+//use TYPO3\CMS\Core\Pagination\SimplePagination;
 
 /*
  * This file was created by Simon Köhler
@@ -111,14 +111,14 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
         $pages = $this->pageRepository->findAllFiltered($filterVariables);
 
-        $arrayPaginator = new ArrayPaginator($pages, 1, 8);
-        $pagination = new SimplePagination($arrayPaginator);
+        //$arrayPaginator = new ArrayPaginator($pages, 1, 8);
+        //$pagination = new SimplePagination($arrayPaginator);
 
         $this->view->assignMultiple([
             'pages' => $pages,
-            'paginator' => $arrayPaginator,
-            'pagination' => $pagination,
-            'pagesArray' => range(1, $pagination->getLastPageNumber()),
+            //'paginator' => $arrayPaginator,
+            //'pagination' => $pagination,
+            //'pagesArray' => range(1, $pagination->getLastPageNumber()),
             'filter' => $filterVariables,
             'backendConfiguration' => $this->backendConfiguration,
             'beLanguage' => $GLOBALS['BE_USER']->user['lang'],
