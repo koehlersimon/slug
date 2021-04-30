@@ -11,6 +11,7 @@ use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /*
  * This file was created by Simon Köhler
@@ -18,11 +19,6 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 
 class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
-    /**
-     * @var HelperUtility
-     */
-    protected $helper;
 
     /**
      * function ajaxList
@@ -298,44 +294,39 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         $languages = $this->helper->getLanguages();
 
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $extensionUtility= GeneralUtility::makeInstance(ExtensionManagementUtility::class);
+        // Check if slugpro is loaded
+        if($extensionUtility::isLoaded('slugpro')){
+            $slugpro = [
+                'version' => '1.0.0'
+            ];
+        }
+        else{
+            $slugpro = FALSE;
+        }
 
         $view = $objectManager->get(StandaloneView::class);
-        $template = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:slug/Resources/Private/Partials/GooglePreview.html');
-        $replace = array(
-          '{title}' => $root['seo_title'] ?: $root['title'],
-          '{url}' => 'https://site.com'.$root['slug'],
-          '{uid}' => $root['uid'],
-          '{description}' => $root['description'] ?: 'no description given!'
-        );
-        $html = file_get_contents($template);
-        $output = str_replace(array_keys($replace), array_values($replace), $html);
-        $drawItem = false;
+        $view->setLayoutRootPaths(array(
+            GeneralUtility::getFileAbsFileName('EXT:slug/Resources/Private/Layouts'),
+            GeneralUtility::getFileAbsFileName('EXT:slugpro/Resources/Private/Layouts')
+        ));
+        $view->setTemplateRootPaths(array(
+            GeneralUtility::getFileAbsFileName('EXT:slug/Resources/Private/Templates'),
+            GeneralUtility::getFileAbsFileName('EXT:slugpro/Resources/Private/Templates')
+        ));
+        $view->setPartialRootPaths(array(
+            GeneralUtility::getFileAbsFileName('EXT:slug/Resources/Private/Partials'),
+            GeneralUtility::getFileAbsFileName('EXT:slugpro/Resources/Private/Partials')
+        ));
+        $view->setTemplate('SlugInfo');
+        $view->assign('uid',$root['uid']);
+        $view->assign('url',$root['slug']);
+        $view->assign('title',$root['seo_title'] ?: $root['title']);
+        $view->assign('description',$root['description'] ?: 'Best practice is to keep meta description length between 120-150 characters. This ensures your entire description will appear on both desktop and mobile.');
+        $view->assign('slugpro',$slugpro);
+        $viewRendered = $view->render();
 
-        /*
-        $html .= '<div class="card">';
-        $html .= '<div class="card-header"><h2>'.$root['title'].' <small>'.$root['seo_title'].'</small></h2></div>';
-        $html .= '<div class="card-body">'
-                . '<span class="input-group-addon"><i class="fa fa-globe"></i></span>'
-                . '<input type="text" data-uid="'.$root['uid'].'" value="'.$root['slug'].'" class="form-control slug-input page-'.$root['uid'].'">'
-                . '<span class="input-group-btn"><button data-uid="'.$root['uid'].'" id="savePageSlug-'.$root['uid'].'" class="btn btn-default savePageSlug" title="Save slug"><i class="fa fa-save"></i></button></span>'
-                . '</div>';
-        foreach ($translations as $page) {
-            foreach ($languages as $value) {
-                if($value['uid'] === $page['sys_language_uid']){
-                    $icon = $value['language_isocode'];
-                }
-            }
-            $html .= '<h3>'.$page['title'].' <small>'.$page['seo_title'].'</small></h3>';
-            $html .= '<div class="input-group">'
-                . '<span class="input-group-addon">'.$icon.'</span>'
-                . '<input type="text" data-uid="'.$page['uid'].'" value="'.$page['slug'].'" class="form-control slug-input page-'.$page['uid'].'">'
-                . '<span class="input-group-btn"><button data-uid="'.$page['uid'].'" id="savePageSlug-'.$page['uid'].'" class="btn btn-default savePageSlug" title="Save slug"><i class="fa fa-save"></i></button></span>'
-                . '</div>';
-        }
-        $html .= '</div>';
-        */
-
-        return new HtmlResponse($output);
+        return new HtmlResponse($viewRendered);
 
     }
 

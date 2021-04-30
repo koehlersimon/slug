@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /*
  * This file was created by Simon Köhler
@@ -86,11 +87,23 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             ['value' => '5000', 'label' => '5000']
         ];
 
+        // Check if slugpro is loaded
+        if(ExtensionManagementUtility::isLoaded('slugpro')){
+            $slugpro = [
+                'version' => '1.0.0'
+            ];
+        }
+        else{
+            $slugpro = FALSE;
+        }
+
+        // Assign variables to the view
         $this->view->assignMultiple([
             'backendConfiguration' => $this->backendConfiguration,
             'extEmconf' => $this->helper->getEmConfiguration('slug'),
             'filterOptions' => $filterOptions,
-            'sites' => (array) $this->sites
+            'sites' => (array) $this->sites,
+            'slugpro' => $slugpro
         ]);
     }
 
