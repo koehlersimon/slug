@@ -8,7 +8,7 @@
 				<source>Slug</source>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<source>version %1s</source>
+				<source>version %1$s</source>
 			</trans-unit>
 			<trans-unit id="ext.note">
 				<source><![CDATA[<p>This extension is in BETA mode. It works, but be careful what you do. You have the power to manipulate all page slugs directly now!</p>]]></source>

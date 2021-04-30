@@ -9,7 +9,7 @@
 				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<target>version %1s</target>
+				<target>version %1$s</target>
 			</trans-unit>
 			<trans-unit id="ext.note">
 				<target><![CDATA[<p></p>]]></target>

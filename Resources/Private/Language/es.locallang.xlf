@@ -9,7 +9,7 @@
 				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<target>version %1s</target>
+				<target>version %1$s</target>
 			</trans-unit>
 			<trans-unit id="ext.note">
 				<target><![CDATA[<p>Esta extensión está en modo BETA. Funciona, pero ten cuidado con lo que haces. Ahora tiene la opción de editar todas las "slugs" de página directamente!</p>]]></target>
