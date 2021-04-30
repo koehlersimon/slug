@@ -73,17 +73,20 @@ class SlugHelper{
         }
         else{
             switch(doktype) {
-              case 199:
-                return 'minus';
+                case 3:
+                    return 'link';
                 break;
-              case 254:
-                return 'file';
+                case 199:
+                    return 'minus';
                 break;
-              case 4:
-                return 'link';
+                case 254:
+                    return 'folder';
                 break;
-              default:
-                return 'file';
+                case 4:
+                    return 'link';
+                break;
+                default:
+                    return 'file-o';
             }
         }
     }
