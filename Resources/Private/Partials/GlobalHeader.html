@@ -5,7 +5,9 @@
                 <f:translate key="LLL:EXT:slug/Resources/Private/Language/locallang.xlf:ext.title"/>
                 <small class="text-primary"><f:translate key="LLL:EXT:slug/Resources/Private/Language/locallang.xlf:ext.version" arguments="{0:'{extEmconf.version}'}"/></small>
             </h1>
-            <f:if condition="{slugpro}"><f:render partial="SlugPro/Version"/></f:if>
+            <f:if condition="{slugpro}">
+                <f:render partial="SlugPro/Version"/>
+            </f:if>
         </div>
         <div class="col-sm-8 col-md-9">
 
