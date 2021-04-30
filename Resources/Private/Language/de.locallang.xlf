@@ -19,71 +19,71 @@
 			<trans-unit id="table.head.uid">
 				<target>Uid</target>
 			</trans-unit>
-                        <trans-unit id="table.head.state">
+            <trans-unit id="table.head.state">
 				<target>Status</target>
 			</trans-unit>
-                        <trans-unit id="table.head.language">
+            <trans-unit id="table.head.language">
 				<target>Sprache</target>
 			</trans-unit>
-                        <trans-unit id="table.head.title">
+            <trans-unit id="table.head.title">
 				<target>Seitentitel</target>
 			</trans-unit>
-                        <trans-unit id="table.head.slug">
+        	<trans-unit id="table.head.slug">
 				<target>Slug</target>
 			</trans-unit>
-                        <trans-unit id="table.head.actions">
+            <trans-unit id="table.head.actions">
 				<target>Aktionen</target>
 			</trans-unit>
 
 
-                        <trans-unit id="button.save.title">
+            <trans-unit id="button.save.title">
 				<target>Slug speichern</target>
 			</trans-unit>
-                        <trans-unit id="button.refresh.label">
+            <trans-unit id="button.refresh.label">
 				<target>Aktualisieren</target>
 			</trans-unit>
-                        <trans-unit id="button.refresh.title">
+            <trans-unit id="button.refresh.title">
 				<target>Aktualisiert das Listenmodul</target>
 			</trans-unit>
-                        <trans-unit id="button.saveall.label">
+            <trans-unit id="button.saveall.label">
 				<target>Alle speichern</target>
 			</trans-unit>
-                        <trans-unit id="button.saveall.title">
+            <trans-unit id="button.saveall.title">
 				<target>Speichert alle aktuell eingegebenen Slugs ohne vorherige Prüfung!</target>
 			</trans-unit>
-                        <trans-unit id="button.generate.label">
+            <trans-unit id="button.generate.label">
 				<target>Slug generieren</target>
 			</trans-unit>
-                        <trans-unit id="button.generate.title">
+            <trans-unit id="button.generate.title">
 				<target>Slug generieren (ohne zu speichern!)</target>
 			</trans-unit>
-                        <trans-unit id="button.generateall.label">
+            <trans-unit id="button.generateall.label">
 				<target>Alle generieren</target>
 			</trans-unit>
-                        <trans-unit id="button.generateall.title">
+            <trans-unit id="button.generateall.title">
 				<target>Alle Slugs der aktuellen Ansicht neu generieren</target>
 			</trans-unit>
-                        <trans-unit id="button.info.title">
+            <trans-unit id="button.info.title">
 				<target>Zusätzliche Informationen und Vorschau anzeigen</target>
 			</trans-unit>
-                        <trans-unit id="button.filter">
+            <trans-unit id="button.filter">
 				<target>Filtern</target>
 			</trans-unit>
-                        <trans-unit id="button.pages">
+            <trans-unit id="button.pages">
 				<target>Seiten</target>
 			</trans-unit>
-                        <trans-unit id="button.news">
+            <trans-unit id="button.news">
 				<target>News</target>
 			</trans-unit>
 
 
-                        <trans-unit id="siteselect.options.others">
+            <trans-unit id="siteselect.options.others">
 				<target>Andere Seiten im Root-Verzeichnis (Hinweis: Kommt mit der nächsten Version)</target>
 			</trans-unit>
-                        <trans-unit id="siteselect.labels.site">
+            <trans-unit id="siteselect.labels.site">
 				<target>Site:</target>
 			</trans-unit>
-                        <trans-unit id="siteselect.labels.language">
+            <trans-unit id="siteselect.labels.language">
 				<target>Sprache:</target>
 			</trans-unit>
 
@@ -94,22 +94,22 @@
 			<trans-unit id="notes.success.generated">
 				<target>Erfolgreich generiert</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.nochanges">
+            <trans-unit id="notes.info.nochanges">
 				<target>Es gibt keine Änderungen zu speichern...</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.slugexists">
+            <trans-unit id="notes.info.slugexists">
 				<target>Dieser Slug existiert bereits in der Datenbank</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.nopagesfound">
+            <trans-unit id="notes.info.nopagesfound">
 				<target>Ooops! Keine Unterseiten gefunden...</target>
 			</trans-unit>
-                        <trans-unit id="notes.confirm.slashonly">
+            <trans-unit id="notes.confirm.slashonly">
 				<target>Möchten Sie wirklich nur einen Schrägstrich speichern? Was ist mit der Root-Seite?</target>
 			</trans-unit>
-                        <trans-unit id="notes.error.noslug">
+            <trans-unit id="notes.error.noslug">
 				<target>Bitte einen Slug eingeben!</target>
 			</trans-unit>
-                        <trans-unit id="notes.error.ajax">
+            <trans-unit id="notes.error.ajax">
 				<target>Mit jQuery und Ajax ist ein Fehler aufgetreten, siehe Skriptausgabe: </target>
 			</trans-unit>
 
@@ -133,34 +133,34 @@
 				<target>Aktion</target>
 			</trans-unit>
 
-                        <trans-unit id="filter.form.select.option.creation_date">
+            <trans-unit id="filter.form.select.option.creation_date">
 				<target>Erstellungsdatum</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.tstamp">
+            <trans-unit id="filter.form.select.option.tstamp">
 				<target>Änderungsdatum</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.title">
+            <trans-unit id="filter.form.select.option.title">
 				<target>Titel</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.slug">
+            <trans-unit id="filter.form.select.option.slug">
 				<target>Slug</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.path_segment">
+            <trans-unit id="filter.form.select.option.path_segment">
 				<target>Pfadsegment</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.sys_language_uid">
+            <trans-unit id="filter.form.select.option.sys_language_uid">
 				<target>Sprache</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.is_siteroot">
+            <trans-unit id="filter.form.select.option.is_siteroot">
 				<target>Site Root</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.doktype">
+            <trans-unit id="filter.form.select.option.doktype">
 				<target>Doktype</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.descending">
+	        <trans-unit id="filter.form.select.option.descending">
 				<target>Absteigend</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.ascending">
+            <trans-unit id="filter.form.select.option.ascending">
 				<target>Aufsteigend</target>
 			</trans-unit>
 
@@ -173,7 +173,7 @@
 			</trans-unit>
 
 
-                        <trans-unit id="recordinfo.no_info_available">
+            <trans-unit id="recordinfo.no_info_available">
 				<target>Für diesen Datensatz stehen derzeit keine Informationen zur Verfügung</target>
 			</trans-unit>
 
