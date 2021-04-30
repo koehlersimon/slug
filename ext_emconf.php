@@ -12,7 +12,7 @@ $EM_CONF['slug'] = [
     'version' => '4.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-11.1.99',
+            'typo3' => '9.5.0-11.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
