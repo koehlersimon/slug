@@ -1,0 +1,33 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a href="#" class="nav-link close"><i class="fa fa-close"></i></a>
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#tab-google-{uid}" type="button" role="tab"><i class="fa fa-google"></i> Google</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tab-twitter-{uid}" type="button" role="tab"><i class="fa fa-twitter"></i> Twitter</button>
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#tab-facebook-{uid}" type="button" role="tab"><i class="fa fa-facebook"></i> Facebook</button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="tab-google-{uid}" role="tabpanel" aria-labelledby="nav-home-tab">
+        <f:render partial="SlugInfo/GooglePreview" arguments="{_all}"/>
+    </div>
+    <div class="tab-pane fade" id="tab-twitter-{uid}" role="tabpanel">
+        <f:if condition="{slugpro}">
+            <f:then>
+                <f:render partial="SlugInfo/TwitterPreview" arguments="{_all}"/>
+            </f:then>
+            <f:else>
+                <f:render partial="ProFeatureNote"/>
+            </f:else>
+        </f:if>
+    </div>
+    <div class="tab-pane fade" id="tab-facebook-{uid}" role="tabpanel">
+        <f:if condition="{slugpro}">
+            <f:then>
+                <f:render partial="SlugInfo/FacebookPreview" arguments="{_all}"/>
+            </f:then>
+            <f:else>
+                <f:render partial="ProFeatureNote"/>
+            </f:else>
+        </f:if>
+    </div>
+</div>
