@@ -21,10 +21,6 @@ div#typo3-docbody{
     padding: 2rem 2rem 0 2rem;
 }
 
-#slug-filter-list{
-    padding: 0 2rem;
-}
-
 #slug-list-wrap{
     padding: 0 2rem;
     tr.deleted{
@@ -125,21 +121,28 @@ tr.record-info-row{
         color: #999;
     }
     .main{
+        font-family: arial,sans-serif !important;
         color: #1a0dab;
         display: inline-block;
         font-weight: normal;
+        font-size: 20px;
+        line-height: 1.3;
         margin: 0;
         padding: 0;
+        margin-bottom: 3px;
     }
     .url a{
+        font-family: arial,sans-serif !important;
         color: #006621;
         font-size: 14px;
         padding-top: 1px;
     }
     .text{
+        line-height: 1.58;
         word-wrap: break-word;
-        line-height: 1.4;
-        color: #545454;
+        color: #4d5156;
+        font-size: 14px;
+        font-family: arial,sans-serif !important;
     }
 }
 
@@ -208,4 +211,8 @@ tr.record-info-row{
 
 .tab-pane{
     padding: 20px;
+}
+
+.not-saved{
+    background-color: lighten(orangered,40%);
 }

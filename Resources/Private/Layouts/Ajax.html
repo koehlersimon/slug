@@ -3,7 +3,7 @@
 
         <f:be.pageRenderer
             includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"
-            includeJsFiles="{0:'{f:uri.resource(path:\'JavaScript/Ajax.js\')}'}"
+            includeJsFiles="{0:'{f:uri.resource(path:\'JavaScript/Classes/SlugHelper.js\')}',1:'{f:uri.resource(path:\'JavaScript/Ajax.js\')}'}"
             />
 
             <div class="typo3-fullDoc">
@@ -12,7 +12,7 @@
                         <f:flashMessages />
                         <f:render section="content" />
                         <footer id="slug-footer">
-                            &copy; 2019 by <a href="https://simon-koehler.com/?pk_campaign=slug&pk_kwd=slug&pk_source=TYPO3-Extension" target="_blank">Simon Köhler</a> | <a href="#" data-toggle="modal" data-target="#modal-extension-info">Info</a> | <a href="https://github.com/koehlersimon/slug#custom-records" target="_blank">How to use custom records</a> | <a href="https://www.digistore24.com/redir/246076/GOCHILLA/" target="_blank">Learn TYPO3</a>
+                            &copy; 2018-2021 by S.Köhler | <a href="#" data-bs-toggle="modal" data-bs-target="#modal-extension-info"><i class="fa fa-info-circle"></i> About this Extension</a> | <a href="https://github.com/koehlersimon/slug#usage" target="_blank"><i class="fa fa-github"></i> Docs & Code</a> | <a href="https://www.digistore24.com/redir/246076/GOCHILLA/" target="_blank"><i class="fa fa-angle-right"></i> Learn TYPO3</a>
                         </footer>
                     </div>
                 </div>

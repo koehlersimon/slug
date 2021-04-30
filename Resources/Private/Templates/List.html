@@ -1,6 +1,6 @@
 {namespace core = TYPO3\CMS\Core\ViewHelpers}
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<f:layout name="Ajax" />
 
 <f:section name="content">
 
@@ -25,14 +25,16 @@
                 <h6>{f:translate(key:'filter.form.label.order', extensionName: slug)}</h6>
                 <f:form.select value="{filter.order}" name="filter[order]" options="{filterOptions.order}" optionValueField="value" optionLabelField="label" class="form-select"/>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <h6>{f:translate(key:'filter.form.label.status', extensionName: slug)}</h6>
                 <f:form.select value="{filter.status}" name="filter[status]" options="{visible:'visible pages',all:'all pages',hidden:'hidden pages',deleted:'deleted pages'}" class="form-select"/>
             </div>
+            <f:comment>
             <div class="col-sm-1">
                 <h6>{f:translate(key:'filter.form.label.action', extensionName: slug)}</h6>
                 <button class="btn btn-default btn-block"><i class="fa fa-filter"></i> Filter</button>
             </div>
+            </f:comment>
         </div>
     </f:form>
 

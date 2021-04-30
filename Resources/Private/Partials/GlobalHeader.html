@@ -6,11 +6,11 @@
         <div class="col-sm-8 col-md-9">
 
             <div class="btn-group pull-right">
-                <f:link.action action="list" controller="Page" class="btn btn-primary">
+                <f:link.action action="ajaxList" controller="Page" class="btn btn-primary text-light">
                     <i class="fa fa-file-o"></i> {f:translate(key:'button.pages', extensionName: slug)}
                 </f:link.action>
                 <f:if condition="{backendConfiguration.treeEnabled}">
-                    <f:link.action action="tree" controller="Page" class="btn btn-primary">
+                    <f:link.action action="tree" controller="Page" class="btn btn-primary text-light">
                         <i class="fa fa-sitemap"></i> {f:translate(key:'button.tree', extensionName: slug)}
                     </f:link.action>
                 </f:if>

@@ -1,18 +1,7 @@
 <div class="google-preview">
-    <h3 class="main">
-        <f:if condition="{page.seo_title}">
-            <f:then>
-                <span title="field=seo_title">{page.seo_title}</span>
-            </f:then>
-            <f:else>
-                <span title="field=title">{page.title}</span>
-            </f:else>
-        </f:if>
-    </h3>
-    <div class="url">
-        <f:render partial="PageUrl" arguments="{page:page}"/>
-    </div>
+    <div class="url" data-googleurl="{uid}"></div>
+    <h3 class="main">{title}</h3>
     <div class="text">
-        {page.description}
+        {description}
     </div>
 </div>

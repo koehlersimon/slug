@@ -8,7 +8,7 @@
 				<source>Slug</source>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<source>version %s</source>
+				<source>version %1s</source>
 			</trans-unit>
 			<trans-unit id="ext.note">
 				<source><![CDATA[<p>This extension is in BETA mode. It works, but be careful what you do. You have the power to manipulate all page slugs directly now!</p>]]></source>
@@ -90,16 +90,19 @@
 			</trans-unit>
 
 
-                        <trans-unit id="notes.success.saved">
+            <trans-unit id="notes.success.saved">
 				<source>Successfully saved</source>
 			</trans-unit>
-                        <trans-unit id="notes.info.nochanges">
+			<trans-unit id="notes.success.generated">
+				<source>Successfully generated</source>
+			</trans-unit>
+            <trans-unit id="notes.info.nochanges">
 				<source>There is nothing to save...</source>
 			</trans-unit>
-                        <trans-unit id="notes.info.slugexists">
+            <trans-unit id="notes.info.slugexists">
 				<source>This slug exists already in the database!</source>
 			</trans-unit>
-                        <trans-unit id="notes.info.nopagesfound">
+            <trans-unit id="notes.info.nopagesfound">
 				<source>Ooops! No pages found...</source>
 			</trans-unit>
                         <trans-unit id="notes.confirm.slashonly">

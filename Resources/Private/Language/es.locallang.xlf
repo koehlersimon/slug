@@ -5,11 +5,11 @@
 		<body>
 
 
-                        <trans-unit id="ext.title">
+            <trans-unit id="ext.title">
 				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<target>version %s</target>
+				<target>version %1s</target>
 			</trans-unit>
 			<trans-unit id="ext.note">
 				<target><![CDATA[<p>Esta extensión está en modo BETA. Funciona, pero ten cuidado con lo que haces. Ahora tiene la opción de editar todas las "slugs" de página directamente!</p>]]></target>
@@ -90,6 +90,9 @@
 
                         <trans-unit id="notes.success.saved">
 				<target>Guardado exitosamente</target>
+			</trans-unit>
+			<trans-unit id="notes.success.saved">
+				<target>Generado exitosamente</target>
 			</trans-unit>
                         <trans-unit id="notes.info.nochanges">
 				<target>No hay cambios para guardar ...</target>

@@ -15,6 +15,10 @@ return [
         'path' => '/slug/savePageSlug',
         'target' => Controller\AjaxController::class . '::savePageSlug'
     ],
+    'slugInfo' => [
+        'path' => '/slug/slugInfo',
+        'target' => Controller\AjaxController::class . '::slugInfo'
+    ],
     'slugExists' => [
         'path' => '/slug/slugExists',
         'target' => Controller\AjaxController::class . '::slugExists'

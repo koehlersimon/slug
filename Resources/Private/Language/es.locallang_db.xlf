@@ -7,7 +7,7 @@
 				<target>Página</target>
 			</trans-unit>
 			<trans-unit id="tx_slug_domain_model_page.slug_lock">
-                                <target>Cerrar</target>
+                <target>Cerrar</target>
 			</trans-unit>
 		</body>
 	</file>

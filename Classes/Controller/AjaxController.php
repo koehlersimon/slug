@@ -5,9 +5,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /*
  * This file was created by Simon Köhler
@@ -29,23 +32,61 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
     public function ajaxList(\Psr\Http\Message\ServerRequestInterface $request)
     {
 
-        $currentPage = $queryParams['page'];
-        $entriesPerPage = 20;
-        $offset = ($currentPage-1) * $entriesPerPage;
-        $totalRecords = $this->getTotalRecords();
-
         $output = [];
         $queryParams = $request->getQueryParams();
+
+        $currentPage = $queryParams['page'];
+        $entriesPerPage = $queryParams['maxentries'];
+        $totalRecords = $this->getTotalRecords($queryParams['table']);
+
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($queryParams['table']);
         $queryBuilder->getRestrictions()->removeAll();
-        $result = $queryBuilder
+        $query = $queryBuilder
             ->select('*')
             ->from($queryParams['table'])
-            ->execute();
+            ->setMaxResults($entriesPerPage)
+            ->orderBy($queryParams['orderby'] ?: 'crdate',$queryParams['order'] ?: 'DESC');
+        if($queryParams['key']){
+            $query->where($queryBuilder->expr()->like('slug',$queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($queryParams['key']) . '%')));
+        }
+        $result = $query->execute();
+
         while ($row = $result->fetch()) {
+            $row['sitePrefix'] = $this->getSitePrefix($row);
             $output[] = $row;
         }
         return new JsonResponse($output);
+    }
+
+    // Finds and returns the base URL of the website
+    private function getSitePrefix($pageData){
+
+        $output = '';
+        $sitefinder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SiteFinder::class);
+
+        try {
+            $site = $sitefinder->getSiteByPageId($pageData['uid']);
+            $siteConf = $site->getConfiguration();
+
+            $output = $siteConf['base'];
+
+            // Remove slash from base URL if neccessary
+            if(substr($siteConf['base'], -1) === "/"){
+                $output = substr($siteConf['base'], 0, -1);
+            }
+            else{
+                $output = $siteConf['base'];
+            }
+
+            if($row['isocode']){
+                $output = $output.'/'.$pageData['isocode'];
+            }
+        }
+        catch (SiteNotFoundException $e) {
+           $output = '[no site]';
+        }
+
+        return $output;
     }
 
     /**
@@ -167,7 +208,6 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
             break;
         }
         $slug = $this->helper->returnUniqueSlug('page', $slugGenerated, $row['uid'], 'pages', 'slug');
-        $responseInfo['status'] = $statement;
         $responseInfo['slug'] = $slug;
         return new JsonResponse($responseInfo);
     }
@@ -242,6 +282,61 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
         }
         $html .= '</div>';
         return new HtmlResponse($html);
+    }
+
+    /**
+     * function slugInfo
+     *
+     * @return void
+     */
+    public function slugInfo(\Psr\Http\Message\ServerRequestInterface $request)
+    {
+        $queryParams = $request->getQueryParams();
+        $this->helper = GeneralUtility::makeInstance(HelperUtility::class);
+        $translations = $this->helper->getPageTranslationsByUid($queryParams['uid']);
+        $root = BackendUtility::getRecord('pages',$queryParams['uid']);
+        $languages = $this->helper->getLanguages();
+
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+
+        $view = $objectManager->get(StandaloneView::class);
+        $template = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:slug/Resources/Private/Partials/GooglePreview.html');
+        $replace = array(
+          '{title}' => $root['seo_title'] ?: $root['title'],
+          '{url}' => 'https://site.com'.$root['slug'],
+          '{uid}' => $root['uid'],
+          '{description}' => $root['description'] ?: 'no description given!'
+        );
+        $html = file_get_contents($template);
+        $output = str_replace(array_keys($replace), array_values($replace), $html);
+        $drawItem = false;
+
+        /*
+        $html .= '<div class="card">';
+        $html .= '<div class="card-header"><h2>'.$root['title'].' <small>'.$root['seo_title'].'</small></h2></div>';
+        $html .= '<div class="card-body">'
+                . '<span class="input-group-addon"><i class="fa fa-globe"></i></span>'
+                . '<input type="text" data-uid="'.$root['uid'].'" value="'.$root['slug'].'" class="form-control slug-input page-'.$root['uid'].'">'
+                . '<span class="input-group-btn"><button data-uid="'.$root['uid'].'" id="savePageSlug-'.$root['uid'].'" class="btn btn-default savePageSlug" title="Save slug"><i class="fa fa-save"></i></button></span>'
+                . '</div>';
+        foreach ($translations as $page) {
+            foreach ($languages as $value) {
+                if($value['uid'] === $page['sys_language_uid']){
+                    $icon = $value['language_isocode'];
+                }
+            }
+            $html .= '<h3>'.$page['title'].' <small>'.$page['seo_title'].'</small></h3>';
+            $html .= '<div class="input-group">'
+                . '<span class="input-group-addon">'.$icon.'</span>'
+                . '<input type="text" data-uid="'.$page['uid'].'" value="'.$page['slug'].'" class="form-control slug-input page-'.$page['uid'].'">'
+                . '<span class="input-group-btn"><button data-uid="'.$page['uid'].'" id="savePageSlug-'.$page['uid'].'" class="btn btn-default savePageSlug" title="Save slug"><i class="fa fa-save"></i></button></span>'
+                . '</div>';
+        }
+        $html .= '</div>';
+        */
+
+        return new HtmlResponse($output);
+
     }
 
 }

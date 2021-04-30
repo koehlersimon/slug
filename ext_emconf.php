@@ -1,13 +1,13 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['slug'] = [
     'title' => 'Slug',
     'description' => 'Helps managing the URL slugs of your TYPO3 pages and custom records!',
     'category' => 'module',
     'author' => 'Simon Köhler',
     'author_email' => 'info@simon-koehler.com',
     'company' => 'simon-koehler.com',
-    'state' => 'stable',
+    'state' => 'beta',
     'clearCacheOnLoad' => true,
     'version' => '4.0.0',
     'constraints' => [

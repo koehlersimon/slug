@@ -5,14 +5,14 @@
 		<body>
 
 
-                        <trans-unit id="ext.title">
+            <trans-unit id="ext.title">
 				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="ext.version">
-				<target>version %s</target>
+				<target>version %1s</target>
 			</trans-unit>
 			<trans-unit id="ext.note">
-				<target><![CDATA[<p>Diese Erweiterung befindet sich im BETA-Modus. Sie funktioniert, aber seien Sie vorsichtig, was Sie tun. Sie haben jetzt die Möglichkeit, alle Seiten-Slugs direkt zu bearbeiten!</p>]]></target>
+				<target><![CDATA[<p></p>]]></target>
 			</trans-unit>
 
 
@@ -88,8 +88,11 @@
 			</trans-unit>
 
 
-                        <trans-unit id="notes.success.saved">
+            <trans-unit id="notes.success.saved">
 				<target>Erfolgreich gespeichert</target>
+			</trans-unit>
+			<trans-unit id="notes.success.generated">
+				<target>Erfolgreich generiert</target>
 			</trans-unit>
                         <trans-unit id="notes.info.nochanges">
 				<target>Es gibt keine Änderungen zu speichern...</target>

@@ -44,9 +44,52 @@ class PageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
      */
     protected function ajaxListAction()
     {
+
+        // Set the order by options for fluid viewhelper f:form.switch
+        $filterOptions['orderby'] = [
+            ['value' => 'crdate', 'label' => $this->helper->getLangKey('filter.form.select.option.creation_date')],
+            ['value' => 'tstamp', 'label' => $this->helper->getLangKey('filter.form.select.option.tstamp')],
+            ['value' => 'title', 'label' => $this->helper->getLangKey('filter.form.select.option.title')],
+            ['value' => 'slug', 'label' => $this->helper->getLangKey('filter.form.select.option.slug')],
+            ['value' => 'sys_language_uid', 'label' => $this->helper->getLangKey('filter.form.select.option.sys_language_uid')],
+            ['value' => 'is_siteroot', 'label' => $this->helper->getLangKey('filter.form.select.option.is_siteroot')],
+            ['value' => 'doktype', 'label' => $this->helper->getLangKey('filter.form.select.option.doktype')]
+        ];
+
+        $filterOptions['order'] = [
+            ['value' => 'DESC', 'label' => $this->helper->getLangKey('filter.form.select.option.descending')],
+            ['value' => 'ASC', 'label' => $this->helper->getLangKey('filter.form.select.option.ascending')]
+        ];
+
+        $filterOptions['maxentries'] = [
+            ['value' => '5', 'label' => '5'],
+            ['value' => '10', 'label' => '10'],
+            ['value' => '20', 'label' => '20'],
+            ['value' => '30', 'label' => '30'],
+            ['value' => '40', 'label' => '40'],
+            ['value' => '50', 'label' => '50'],
+            ['value' => '60', 'label' => '60'],
+            ['value' => '70', 'label' => '70'],
+            ['value' => '80', 'label' => '80'],
+            ['value' => '90', 'label' => '90'],
+            ['value' => '100', 'label' => '100'],
+            ['value' => '150', 'label' => '150'],
+            ['value' => '200', 'label' => '200'],
+            ['value' => '300', 'label' => '300'],
+            ['value' => '400', 'label' => '400'],
+            ['value' => '500', 'label' => '500'],
+            ['value' => '1000', 'label' => '1000 (be careful!)'],
+            ['value' => '1500', 'label' => '1500'],
+            ['value' => '2000', 'label' => '2000'],
+            ['value' => '3000', 'label' => '3000'],
+            ['value' => '4000', 'label' => '4000'],
+            ['value' => '5000', 'label' => '5000']
+        ];
+
         $this->view->assignMultiple([
             'backendConfiguration' => $this->backendConfiguration,
             'extEmconf' => $this->helper->getEmConfiguration('slug'),
+            'filterOptions' => $filterOptions,
             'sites' => (array) $this->sites
         ]);
     }
