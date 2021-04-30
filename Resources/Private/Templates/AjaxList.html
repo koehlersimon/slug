@@ -17,7 +17,14 @@
                 <h6>{f:translate(key:'filter.form.label.entries_per_page', extensionName: slug)}</h6>
                 <select class="form-select" id="filter_maxentries">
                     <f:for each="{filterOptions.maxentries}" as="entry">
-                        <option value="{entry.value}">{entry.label}</option>
+                        <f:if condition="{backendConfiguration.defaultMaxEntries} == {entry.value}">
+                            <f:then>
+                                <option value="{entry.value}" selected>{entry.label}</option>
+                            </f:then>
+                            <f:else>
+                                <option value="{entry.value}">{entry.label}</option>
+                            </f:else>
+                        </f:if>
                     </f:for>
                 </select>
             </div>
