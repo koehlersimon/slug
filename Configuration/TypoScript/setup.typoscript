@@ -4,11 +4,11 @@ module.tx_slug {
         storagePid = {$module.tx_slug.persistence.storagePid}
     }
     view {
-        templateRootPaths.0 = EXT:slug/Resources/Private/Backend/Templates/
+        templateRootPaths.0 = EXT:slug/Resources/Private/Templates/
         templateRootPaths.1 = {$module.tx_slug.view.templateRootPath}
-        partialRootPaths.0 = EXT:slug/Resources/Private/Backend/Partials/
+        partialRootPaths.0 = EXT:slug/Resources/Private/Partials/
         partialRootPaths.1 = {$module.tx_slug.view.partialRootPath}
-        layoutRootPaths.0 = EXT:slug/Resources/Private/Backend/Layouts/
+        layoutRootPaths.0 = EXT:slug/Resources/Private/Layouts/
         layoutRootPaths.1 = {$module.tx_slug.view.layoutRootPath}
     }
     settings{

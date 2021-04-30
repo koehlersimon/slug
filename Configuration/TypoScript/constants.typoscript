@@ -2,11 +2,11 @@
 module.tx_slug {
     view {
         # cat=module.tx_slug/file; type=string; label=Path to template root (BE)
-        templateRootPath = EXT:slug/Resources/Private/Backend/Templates/
+        templateRootPath = EXT:slug/Resources/Private/Templates/
         # cat=module.tx_slug/file; type=string; label=Path to template partials (BE)
-        partialRootPath = EXT:slug/Resources/Private/Backend/Partials/
+        partialRootPath = EXT:slug/Resources/Private/Partials/
         # cat=module.tx_slug/file; type=string; label=Path to template layouts (BE)
-        layoutRootPath = EXT:slug/Resources/Private/Backend/Layouts/
+        layoutRootPath = EXT:slug/Resources/Private/Layouts/
     }
     persistence {
         storagePid = 0
