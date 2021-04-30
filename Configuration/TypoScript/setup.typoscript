@@ -1,4 +1,3 @@
-
 # Module configuration
 module.tx_slug {
     persistence {

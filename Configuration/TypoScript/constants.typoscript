@@ -1,4 +1,4 @@
-
+# Module configuration
 module.tx_slug {
     view {
         # cat=module.tx_slug/file; type=string; label=Path to template root (BE)
@@ -9,7 +9,6 @@ module.tx_slug {
         layoutRootPath = EXT:slug/Resources/Private/Backend/Layouts/
     }
     persistence {
-        # cat=module.tx_slug//a; type=string; label=Default storage PID
         storagePid = 0
     }
 }
