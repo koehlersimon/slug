@@ -182,6 +182,54 @@
 				<source>No information available for this record</source>
 			</trans-unit>
 
+
+			<trans-unit id="pro.feature_note">
+				<source><![CDATA[This feature is only available in Slug PRO. <a href="https://slugpro.simon-koehler.com/" target="_blank" class="btn btn-primary">BUY SLUG PRO</a>]]></source>
+			</trans-unit>
+
+
+			<trans-unit id="extension_info.support_development">
+				<source>Support Development</source>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development_text">
+				<source>Support Open Source Development with a donation. It's the best way to keep Extensions for your favorite CMS up-to-date! This extension is developed by Simon Köhler since November 2018.</source>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development.donate">
+				<source>Make a Donation</source>
+			</trans-unit>
+			<trans-unit id="extension_info.code">
+				<source>Have look into the code?</source>
+			</trans-unit>
+			<trans-unit id="extension_info.code_text">
+				<source>You can find all the Open Source Codes of the free Slug version here on GitHub.</source>
+			</trans-unit>
+			<trans-unit id="extension_info.issue">
+				<source>You want report an issue?</source>
+			</trans-unit>
+			<trans-unit id="extension_info.issue_text">
+				<source>If you use Github, you can report any issues here.</source>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube">
+				<source>TYPO3 Videos on YouTube</source>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube_text">
+				<source>Videos about new releases or functions and tutorials.</source>
+			</trans-unit>
+			<trans-unit id="extension_info.close">
+				<source>close</source>
+			</trans-unit>
+
+
+			<trans-unit id="footer.about">
+				<source>About this Extension</source>
+			</trans-unit>
+			<trans-unit id="footer.docs">
+				<source>Docs/Code</source>
+			</trans-unit>
+			<trans-unit id="footer.affiliate_link">
+				<source>Learn TYPO3</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

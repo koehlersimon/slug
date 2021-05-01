@@ -5,7 +5,7 @@
 		<body>
 
 
-            <trans-unit id="ext.title">
+			<trans-unit id="ext.title">
 				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="ext.version">
@@ -19,145 +19,145 @@
 			<trans-unit id="table.head.uid">
 				<target>Uid</target>
 			</trans-unit>
-                        <trans-unit id="table.head.state">
+            <trans-unit id="table.head.state">
 				<target>Estatus</target>
 			</trans-unit>
-                        <trans-unit id="table.head.language">
+            <trans-unit id="table.head.language">
 				<target>Idioma</target>
 			</trans-unit>
-                        <trans-unit id="table.head.title">
+            <trans-unit id="table.head.title">
 				<target>Título de la página</target>
 			</trans-unit>
-                        <trans-unit id="table.head.slug">
+            <trans-unit id="table.head.slug">
 				<target>Slug</target>
 			</trans-unit>
-                        <trans-unit id="table.head.actions">
+            <trans-unit id="table.head.actions">
 				<target>Acciones</target>
 			</trans-unit>
 
 
-                        <trans-unit id="button.save.title">
+            <trans-unit id="button.save.title">
 				<target>Guardar Slug</target>
 			</trans-unit>
-                        <trans-unit id="button.refresh.label">
+            <trans-unit id="button.refresh.label">
 				<target>Actualización</target>
 			</trans-unit>
-                        <trans-unit id="button.refresh.title">
+            <trans-unit id="button.refresh.title">
 				<target>Actualiza el módulo de lista.</target>
 			</trans-unit>
-                        <trans-unit id="button.saveall.label">
+            <trans-unit id="button.saveall.label">
 				<target>Guardar todo</target>
 			</trans-unit>
-                        <trans-unit id="button.saveall.title">
+            <trans-unit id="button.saveall.title">
 				<target>Guarda todas los Slugs actualmente ingresadas sin chequeo previo!</target>
 			</trans-unit>
-                        <trans-unit id="button.generate.label">
+            <trans-unit id="button.generate.label">
 				<target>Generar Slug</target>
 			</trans-unit>
-                        <trans-unit id="button.generate.title">
+            <trans-unit id="button.generate.title">
 				<target>Generar Slug</target>
 			</trans-unit>
-                        <trans-unit id="button.generateall.label">
+            <trans-unit id="button.generateall.label">
 				<target>Generar Slugs</target>
 			</trans-unit>
-                        <trans-unit id="button.generateall.title">
+            <trans-unit id="button.generateall.title">
 				<target>Regenera todas las URL de la vista actual</target>
 			</trans-unit>
-                        <trans-unit id="button.info.title">
+            <trans-unit id="button.info.title">
 				<target>Mostrar información adicional y vista previa</target>
 			</trans-unit>
-                        <trans-unit id="button.filter">
+            <trans-unit id="button.filter">
 				<target>Filtrar</target>
 			</trans-unit>
-                        <trans-unit id="button.pages">
+            <trans-unit id="button.pages">
 				<target>Paginas</target>
 			</trans-unit>
-                        <trans-unit id="button.news">
+            <trans-unit id="button.news">
 				<target>News</target>
 			</trans-unit>
 
 
-                        <trans-unit id="siteselect.options.others">
+			<trans-unit id="siteselect.options.others">
 				<target>Otras páginas en el directorio raíz (Nota: viene con la próxima versión)</target>
 			</trans-unit>
-                        <trans-unit id="siteselect.labels.site">
+			<trans-unit id="siteselect.labels.site">
 				<target>Site:</target>
 			</trans-unit>
-                        <trans-unit id="siteselect.labels.language">
+			<trans-unit id="siteselect.labels.language">
 				<target>Idioma:</target>
 			</trans-unit>
 
 
-                        <trans-unit id="notes.success.saved">
+			<trans-unit id="notes.success.saved">
 				<target>Guardado exitosamente</target>
 			</trans-unit>
-			<trans-unit id="notes.success.saved">
+			<trans-unit id="notes.success.generated">
 				<target>Generado exitosamente</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.nochanges">
+			<trans-unit id="notes.info.nochanges">
 				<target>No hay cambios para guardar ...</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.slugexists">
+			<trans-unit id="notes.info.slugexists">
 				<target>Esta entrada ya existe en la base de datos.</target>
 			</trans-unit>
-                        <trans-unit id="notes.info.nopagesfound">
+			<trans-unit id="notes.info.nopagesfound">
 				<target>Ooops! No se encontraron subpáginas ...</target>
 			</trans-unit>
-                        <trans-unit id="notes.confirm.slashonly">
+			<trans-unit id="notes.confirm.slashonly">
 				<target>¿Estás seguro de que quieres guardar solo una barra? ¿Qué pasa con la página raíz?</target>
 			</trans-unit>
-                        <trans-unit id="notes.error.noslug">
+			<trans-unit id="notes.error.noslug">
 				<target>Por favor, introduzca un Slug!</target>
 			</trans-unit>
-                        <trans-unit id="notes.error.ajax">
+			<trans-unit id="notes.error.ajax">
 				<target>Se ha producido un error con jQuery y Ajax, consulte Salida de script: </target>
 			</trans-unit>
 
 
-                        <trans-unit id="filter.form.label.search_key">
+			<trans-unit id="filter.form.label.search_key">
 				<target>Buscar Slugs para palabras clave</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.label.entries_per_page">
+			<trans-unit id="filter.form.label.entries_per_page">
 				<target>Entradas por página</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.label.order_by">
+			<trans-unit id="filter.form.label.order_by">
 				<target>Orden por campo</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.label.order">
+			<trans-unit id="filter.form.label.order">
 				<target>Orden</target>
 			</trans-unit>
 			<trans-unit id="filter.form.label.status">
 				<target>Estatus</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.label.action">
+			<trans-unit id="filter.form.label.action">
 				<target>Acción</target>
 			</trans-unit>
 
-                        <trans-unit id="filter.form.select.option.creation_date">
+            <trans-unit id="filter.form.select.option.creation_date">
 				<target>Fecha de creación</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.title">
+            <trans-unit id="filter.form.select.option.title">
 				<target>Titulo</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.slug">
+            <trans-unit id="filter.form.select.option.slug">
 				<target>Slug</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.path_segment">
+            <trans-unit id="filter.form.select.option.path_segment">
 				<target>Path Segment</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.sys_language_uid">
+            <trans-unit id="filter.form.select.option.sys_language_uid">
 				<target>Idioma</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.is_siteroot">
+            <trans-unit id="filter.form.select.option.is_siteroot">
 				<target>Site Root</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.doktype">
+            <trans-unit id="filter.form.select.option.doktype">
 				<target>Doktype</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.descending">
+            <trans-unit id="filter.form.select.option.descending">
 				<target>Descendiendo</target>
 			</trans-unit>
-                        <trans-unit id="filter.form.select.option.ascending">
+            <trans-unit id="filter.form.select.option.ascending">
 				<target>Ascendente</target>
 			</trans-unit>
 
@@ -170,8 +170,56 @@
 			</trans-unit>
 
 
-                        <trans-unit id="recordinfo.no_info_available">
+			<trans-unit id="recordinfo.no_info_available">
 				<target>Actualmente no hay información disponible para este registro.</target>
+			</trans-unit>
+
+
+			<trans-unit id="pro.feature_note">
+				<target><![CDATA[Esta función sólo está disponible en Slug PRO. <a href="https://slugpro.simon-koehler.com/es" target="_blank" class="btn btn-primary">COMPRAR SLUG PRO</a>]]></target>
+			</trans-unit>
+
+
+			<trans-unit id="extension_info.support_development">
+				<target>Apoye el desarrollo Open Source</target>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development_text">
+				<target>Apoye el desarrollo de código abierto con una donación. ¡Es la mejor manera de mantener actualizadas las extensiones para tu CMS favorito! Esta extensión es desarrollada por Simon Köhler desde noviembre de 2018.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development.donate">
+				<target>Donar con PayPal</target>
+			</trans-unit>
+			<trans-unit id="extension_info.code">
+				<target>¿Quieres ver el código?</target>
+			</trans-unit>
+			<trans-unit id="extension_info.code_text">
+				<target>Puedes encontrar todos los códigos de código abierto de la versión gratuita de Slug aquí en GitHub.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.issue">
+				<target>¿Problemas o preguntas?</target>
+			</trans-unit>
+			<trans-unit id="extension_info.issue_text">
+				<target>GitHub es el lugar donde se pueden resolver los errores técnicos.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube">
+				<target>Vídeos de TYPO3 en YouTube</target>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube_text">
+				<target>Vídeos sobre nuevas versiones, funciones y tutoriales</target>
+			</trans-unit>
+			<trans-unit id="extension_info.close">
+				<target>cerrar</target>
+			</trans-unit>
+
+
+			<trans-unit id="footer.about">
+				<target>Sobre esta extensión</target>
+			</trans-unit>
+			<trans-unit id="footer.docs">
+				<target>Documentación y código</target>
+			</trans-unit>
+			<trans-unit id="footer.affiliate_link">
+				<target>Aprender TYPO3</target>
 			</trans-unit>
 
 

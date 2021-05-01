@@ -178,6 +178,53 @@
 			</trans-unit>
 
 
+			<trans-unit id="pro.feature_note">
+				<target><![CDATA[Dieses Feature steht nur in Slug PRO zur Verfügung. <a href="https://slugpro.simon-koehler.com/de" target="_blank" class="btn btn-primary">SLUG PRO KAUFEN</a>]]></target>
+			</trans-unit>
+
+
+			<trans-unit id="extension_info.support_development">
+				<target>Unterstützen Sie Open Source</target>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development_text">
+				<target>Unterstützen Sie die Open Source Entwicklung mit einer Spende. Das ist der beste Weg, um Extensions für Ihr Lieblings-CMS aktuell zu halten! Diese Erweiterung wird von Simon Köhler seit November 2018 entwickelt.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.support_development.donate">
+				<target>Spende mit PayPal</target>
+			</trans-unit>
+			<trans-unit id="extension_info.code">
+				<target>Blick in den Code gefällig?</target>
+			</trans-unit>
+			<trans-unit id="extension_info.code_text">
+				<target>Alle Open Source Codes der kostenlosen Slug-Version hier auf GitHub.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.issue">
+				<target>Problem oder Fragen?</target>
+			</trans-unit>
+			<trans-unit id="extension_info.issue_text">
+				<target>Bei GitHub können technische Fehler gelöst werden.</target>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube">
+				<target>TYPO3-Videos auf YouTube</target>
+			</trans-unit>
+			<trans-unit id="extension_info.youtube_text">
+				<target>Videos über neue Versionen, Funktionen und Tutorials</target>
+			</trans-unit>
+			<trans-unit id="extension_info.close">
+				<target>schließen</target>
+			</trans-unit>
+
+
+			<trans-unit id="footer.about">
+				<target>Über diese Extension</target>
+			</trans-unit>
+			<trans-unit id="footer.docs">
+				<target>Dokumentation/Code</target>
+			</trans-unit>
+			<trans-unit id="footer.affiliate_link">
+				<target>TYPO3 lernen</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
