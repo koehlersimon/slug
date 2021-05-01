@@ -127,7 +127,9 @@ class SlugHelper{
     }
 
     updateGooglePreviewUrl(url,uid){
-        document.querySelector('div[data-googleurl="'+uid+'"]').innerHTML = url;
+        let obj = document.querySelector('div[data-googleurl="'+uid+'"]');
+        let obj_exists = obj !== null;
+        if(obj_exists){ obj.innerHTML = url; }
     }
 
 }
