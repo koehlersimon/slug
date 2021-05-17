@@ -27,6 +27,11 @@
             "email": "info@simon-koehler.com"
         }
     ],
+   	"extra": {
+		"typo3/cms": {
+			"extension-key": "slug"
+		}
+	},
     "autoload": {
         "psr-4": {
             "SIMONKOEHLER\\Slug\\": "Classes"
